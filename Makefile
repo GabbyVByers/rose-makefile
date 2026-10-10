@@ -18,7 +18,7 @@ ifeq ($(wildcard $(VULKAN_SDK_DIR)/Include/SDL3/SDL.h),)
 endif
 
 CC       := gcc
-CPPFLAGS := -isystem $(VULKAN_SDK_DIR)/Include
+CPPFLAGS := -isystem $(VULKAN_SDK_DIR)/Include -isystem libraries/stb-master
 CFLAGS   := -std=c17 -Wall -Wextra -Wpedantic -g -O0
 LDFLAGS  := -L$(VULKAN_SDK_DIR)/Lib
 LDLIBS   := -lSDL3

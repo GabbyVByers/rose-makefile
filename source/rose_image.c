@@ -4,6 +4,8 @@
  */
 
 #define ROSE_EXTERN
+#define STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "rose.h"
 #include "rose_state.h"
 
