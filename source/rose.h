@@ -48,9 +48,9 @@ typedef struct { f32 r, g, b, a; } ROSE_Color4;
 #define ROSE_COLOR_RED    ROSE_COLOR(255,   0,   0, 255)
 #define ROSE_COLOR_GREEN  ROSE_COLOR(  0, 255,   0, 255)
 #define ROSE_COLOR_BLUE   ROSE_COLOR(  0,   0, 255, 255)
-#define ROSE_COLOR_YELLOW ROSE_COLOR(255, 255,   0, 255)
 #define ROSE_COLOR_CYAN   ROSE_COLOR(  0, 255, 255, 255)
 #define ROSE_COLOR_PURPLE ROSE_COLOR(255,   0, 255, 255)
+#define ROSE_COLOR_YELLOW ROSE_COLOR(255, 255,   0, 255)
 #define ROSE_COLOR_TRANS  ROSE_COLOR(255, 255, 255,   0)
 
 typedef struct {
@@ -74,8 +74,8 @@ void ROSE_Quit(void);
 
 void ROSE_WindowToggleVSync(bool);
 bool ROSE_WindowIsOpen(void);
-void ROSE_WindowClearFrame(ROSE_Color4);
-void ROSE_WindowRenderFrame(void);
+void ROSE_WindowClear(ROSE_Color4);
+void ROSE_WindowRender(void);
 u32  ROSE_WindowWidth(void);
 u32  ROSE_WindowHeight(void);
 
@@ -111,6 +111,8 @@ ROSE_Text*      ROSE_TextCreate(const char*);
 void            ROSE_TextDestroy(ROSE_Text*);
 void            ROSE_TextUpdateString(ROSE_Text*, const char*);
 void            ROSE_TextDraw(ROSE_Text*, i32, i32, float, ROSE_Color4);
+u32             ROSE_TextWidth(ROSE_Text*);
+u32             ROSE_TextHeight(ROSE_Text*);
 
 ROSE_Sprite*    ROSE_SpriteCreate(ROSE_Image*);
 void            ROSE_SpriteDestroy(ROSE_Sprite*);

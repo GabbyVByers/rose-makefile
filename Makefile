@@ -25,6 +25,7 @@ LDLIBS   := -lSDL3
 
 SRC_DIR    := source
 SHADER_DIR := shaders
+ASSET_DIR  := assets
 BUILD_DIR  := build
 TARGET     := app
 
@@ -40,11 +41,16 @@ BIN  := $(BUILD_DIR)/$(TARGET)$(EXE)
 GLSLC       := $(VULKAN_SDK_DIR)/Bin/glslc
 SHADER_OUTS := $(BUILD_DIR)/shaders/vertex.spv $(BUILD_DIR)/shaders/fragment.spv
 
+rwildcard = $(foreach d,$(wildcard $(1)/*),$(call rwildcard,$(d))$(filter-out $(wildcard $(d)/.),$(d)))
+
+ASSETS     := $(call rwildcard,$(ASSET_DIR))
+ASSET_OUTS := $(ASSETS:$(ASSET_DIR)/%=$(BUILD_DIR)/assets/%)
+
 .PHONY: all build run clean start
 
 all: build
 
-build: $(BIN) $(SHADER_OUTS)
+build: $(BIN) $(SHADER_OUTS) $(ASSET_OUTS)
 
 $(BIN): $(OBJS)
 	$(CC) $(OBJS) $(LDFLAGS) $(LDLIBS) -o $@
@@ -60,6 +66,10 @@ $(BUILD_DIR)/shaders/vertex.spv: $(SHADER_DIR)/shader.vert
 $(BUILD_DIR)/shaders/fragment.spv: $(SHADER_DIR)/shader.frag
 	@mkdir -p $(@D)
 	$(GLSLC) $< -o $@
+
+$(BUILD_DIR)/assets/%: $(ASSET_DIR)/%
+	@mkdir -p $(@D)
+	cp $< $@
 
 run: build
 	cd $(BUILD_DIR) && ./$(TARGET)$(EXE)

@@ -83,7 +83,7 @@ bool ROSE_WindowIsOpen(void)
 	return true;
 }
 
-void ROSE_WindowClearFrame(ROSE_Color4 color)
+void ROSE_WindowClear(ROSE_Color4 color)
 {
 	command_buffer = SDL_AcquireGPUCommandBuffer(device);
 
@@ -176,7 +176,7 @@ void ROSE_WindowClearFrame(ROSE_Color4 color)
 	SDL_BindGPUGraphicsPipeline(render_pass, pipeline);
 }
 
-void ROSE_WindowRenderFrame(void)
+void ROSE_WindowRender(void)
 {
 	if (minimized)
 	{

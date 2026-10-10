@@ -1,6 +1,6 @@
 
 /*
- *   Source File [rose_app.c]
+ *   Source File [rose_init.c]
  */
 
 #include "rose.h"
@@ -8,6 +8,9 @@
 
 void ROSE_Init(const char* title, u32 width, u32 height, bool vkdebug)
 {
+	assert(width != 0);
+	assert(height != 0);
+
 	const u32 min = 256;
 	screen_width = (width < min) ? min : width;
 	screen_height = (height < min) ? min : height;
@@ -201,10 +204,9 @@ void ROSE_Init(const char* title, u32 width, u32 height, bool vkdebug)
 	SDL_ReleaseGPUShader(device, vertex_shader_program);
 	SDL_ReleaseGPUShader(device, fragment_shader_program);
 
-	//ROSE_Image* ascii_image = ROSE_ImageLoadFromFile("textures/ascii.png");
-	//ascii_texture = ROSE__CreateRenderTexture(ROSE_ImageWidth(ascii_image), ROSE_ImageHeight(ascii_image));
-	//ROSE__UploadImageToRenderTexture(ascii_image, ascii_texture);
-	//ROSE_ImageDestroy(ascii_image);
+	ROSE_Image* ascii_image = ROSE_ImageLoad("assets/ascii.png");
+	ascii_texture = ROSE_SDLCreateTexture(ascii_image);
+	ROSE_ImageDestroy(ascii_image);
 }
 
 void ROSE_Quit(void)

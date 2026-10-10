@@ -11,7 +11,7 @@ SDL_GPUTexture* ROSE_SDLCreateTexture(ROSE_Image* image)
 {
 	u32 width = ROSE_ImageWidth(image);
 	u32 height = ROSE_ImageHeight(image);
-	u32 image_size = (width * height * 4);
+	u32 image_size = (width * height * (u32)sizeof(ROSE_RGBA));
 
 	SDL_GPUTextureCreateInfo texture_create_info = {
 		.type = SDL_GPU_TEXTURETYPE_2D,
@@ -87,6 +87,9 @@ SDL_GPUTexture* ROSE_SDLCreateTexture(ROSE_Image* image)
 
 static SDL_GPUBuffer* create_vertex_buffer(void* vertices, u32 count, u32 stride)
 {
+	assert(count != 0);
+	assert(stride != 0);
+
 	u32 buffer_size = count * stride;
 
 	SDL_GPUBufferCreateInfo buffer_create_info = {

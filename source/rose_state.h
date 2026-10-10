@@ -1,6 +1,6 @@
 
 /*
- *   Source File [rose_state.h]
+ *   Header File [rose_state.h]
  */
 
 #ifndef ROSE_STATE_HEADER_GUARD
@@ -23,6 +23,7 @@ ROSE_GLOBAL(SDL_Window*, window)
 ROSE_GLOBAL(SDL_GPUDevice*, device)
 ROSE_GLOBAL(SDL_GPUSampler*, sampler)
 ROSE_GLOBAL(SDL_GPUTexture*, depth_texture)
+ROSE_GLOBAL(SDL_GPUTexture*, ascii_texture)
 ROSE_GLOBAL(SDL_GPUGraphicsPipeline*, pipeline)
 
 ROSE_GLOBAL(bool, minimized)
@@ -36,8 +37,8 @@ ROSE_GLOBAL(float, mouse_vx)
 ROSE_GLOBAL(float, mouse_vy)
 ROSE_GLOBAL(float, saved_mouse_px)
 ROSE_GLOBAL(float, saved_mouse_py)
-ROSE_GLOBAL(i32, curr_mouse_state)
-ROSE_GLOBAL(i32, prev_mouse_state)
+ROSE_GLOBAL(u32, curr_mouse_state)
+ROSE_GLOBAL(u32, prev_mouse_state)
 ROSE_GLOBAL(float, mouse_scroll)
 
 ROSE_GLOBAL(bool, curr_keyboard_state[SDL_SCANCODE_COUNT])

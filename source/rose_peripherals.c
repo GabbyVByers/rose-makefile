@@ -74,8 +74,6 @@ f32 ROSE_MouseVelocityY(void)
 	return mouse_vy;
 }
 
-/* Keyboard */
-
 bool ROSE_KeyboardPressing(ROSE_Scancode button)
 {
 	return curr_keyboard_state[button];
