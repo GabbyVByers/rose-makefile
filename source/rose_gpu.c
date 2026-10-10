@@ -85,7 +85,7 @@ SDL_GPUTexture* ROSE_SDLCreateTexture(ROSE_Image* image)
 	return texture;
 }
 
-static SDL_GPUBuffer* create_vertex_buffer(void* vertices, u32 count, u32 stride)
+SDL_GPUBuffer* ROSE_SDLCreateVertexBuffer(void* vertices, u32 count, u32 stride)
 {
 	assert(count != 0);
 	assert(stride != 0);
@@ -165,15 +165,5 @@ static SDL_GPUBuffer* create_vertex_buffer(void* vertices, u32 count, u32 stride
 
 	SDL_ReleaseGPUTransferBuffer(device, transfer_buffer);
 	return buffer;
-}
-
-SDL_GPUBuffer* ROSE_SDLCreateVertexBuffer2D(ROSE_Vertex2D* vertices, u32 count)
-{
-	return create_vertex_buffer(vertices, count, sizeof(ROSE_Vertex2D));
-}
-
-SDL_GPUBuffer* ROSE_SDLCreateVertexBuffer3D(ROSE_Vertex3D* vertices, u32 count)
-{
-	return create_vertex_buffer(vertices, count, sizeof(ROSE_Vertex3D));
 }
 

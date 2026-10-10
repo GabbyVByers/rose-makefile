@@ -121,8 +121,7 @@ u32             ROSE_SpriteWidth(ROSE_Sprite*);
 u32             ROSE_SpriteHeight(ROSE_Sprite*);
 
 SDL_GPUTexture* ROSE_SDLCreateTexture(ROSE_Image*);
-SDL_GPUBuffer*  ROSE_SDLCreateVertexBuffer2D(ROSE_Vertex2D*, u32);
-SDL_GPUBuffer*  ROSE_SDLCreateVertexBuffer3D(ROSE_Vertex3D*, u32);
+SDL_GPUBuffer*  ROSE_SDLCreateVertexBuffer(ROSE_Vertex2D*, u32, u32);
 
 #endif /* ROSE_ROSE_HEADER_GUARD */
 

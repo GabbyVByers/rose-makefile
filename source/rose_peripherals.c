@@ -9,17 +9,20 @@
 
 bool ROSE_MousePressing(u32 button)
 {
+	assert(button != 0);
 	return (curr_mouse_state & SDL_BUTTON_MASK(button)) != 0;
 }
 
 bool ROSE_MousePressed(u32 button)
 {
+	assert(button != 0);
 	return ((prev_mouse_state & SDL_BUTTON_MASK(button)) == 0)
 		&& ((curr_mouse_state & SDL_BUTTON_MASK(button)) != 0);
 }
 
 bool ROSE_MouseReleased(u32 button)
 {
+	assert(button != 0);
 	return ((prev_mouse_state & SDL_BUTTON_MASK(button)) != 0)
 		&& ((curr_mouse_state & SDL_BUTTON_MASK(button)) == 0);
 }
